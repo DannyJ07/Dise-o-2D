@@ -8,6 +8,7 @@ public class Jugador : MonoBehaviour
     private Rigidbody2D rigidbody2D;
     private Animator animator;
     private bool estaSaltando = false; // Variable para controlar el estado del salto
+    public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -34,5 +35,10 @@ public class Jugador : MonoBehaviour
             animator.SetBool("estaSaltando", false);
             estaSaltando = false; // Marca como que está en el suelo al tocar el suelo
         }
+
+        if (collision.gameObject.tag == "Obstaculo")
+        {
+            gameManager.gameOver = true;
+        }
     }
-}
+}   
